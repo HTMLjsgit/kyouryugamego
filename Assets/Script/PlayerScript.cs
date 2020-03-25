@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public float scroll = 5f;
     float direction = 0f;
     Rigidbody2D rb;
+    public float PlayerHP = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -71,6 +72,14 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "ground")
         {
             jump = false;
+        }
+        if(collision.gameObject.tag == "enemy")
+        {
+             for(var i = 0; i < 10; i++)
+            {
+                PlayerHP--;
+            }
+            Debug.Log("プレイヤーHP: " + PlayerHP.ToString());
         }
     }
 

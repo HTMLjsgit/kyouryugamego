@@ -16,8 +16,13 @@ public class yariprehab : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            Instantiate(yari, this.transform.position, Quaternion.identity);
-
+            Invoke("prehab", 0.5f);
         }
+    }
+
+    void prehab()
+    {
+        GameObject yariinstance = Instantiate(yari, this.transform.position, Quaternion.identity);
+
     }
 }
